@@ -16,6 +16,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
@@ -32,10 +38,10 @@ dependencies {
 
     //DecleX
     annotationProcessor "com.dspot:declex:$declex_version"
-    implementation ("com.dspot:declex-api:$declex_version") {
+    implementation("com.dspot:declex-api:$declex_version") {
         exclude group: 'com.google.code.findbugs', module: 'annotations'
     }
-    implementation ("com.dspot:declex-actions:2.0.a.27") {
+    implementation("com.dspot:declex-actions:2.0.a.27") {
         exclude group: 'com.google.code.findbugs', module: 'annotations'
     }
 
@@ -45,4 +51,11 @@ dependencies {
     //Architectural Components
     annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
+
+    implementation 'com.google.firebase:firebase-auth:16.1.0'
+    implementation 'com.google.firebase:firebase-core:16.0.7'
+
+    implementation "io.reactivex.rxjava2:rxjava:2.2.0"
+
 }
+apply plugin: 'com.google.gms.google-services'
