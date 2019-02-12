@@ -3,6 +3,7 @@ package com.dspot.declex.example.expenses.ui.auth.login;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
+import com.dspot.declex.example.expenses.auth.ExpensesAuth;
 import com.dspot.declex.example.expenses.auth.impl.ExpensesAuthImpl;
 import com.dspot.declex.example.expenses.ui.auth.AuthNavigation;
 
@@ -18,7 +19,7 @@ import pl.com.dspot.archiannotations.annotation.EViewModel;
 public class LoginViewModel extends ViewModel {
 
     @Bean
-    ExpensesAuthImpl expensesAuth;
+    ExpensesAuth expensesAuth;
 
     @Bean
     AuthNavigation authNavigation;

@@ -13,4 +13,16 @@
     <string name="hint_input_email">Email</string>
     <string name="hint_input_password">Password</string>
     <string name="hint_input_password_confirm">Password confirm</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="navigation_expenses_list">Expenses list</string>
+    <string name="navigation_new_expenses">New expenses</string>
+    <string name="navigation_expenses_per_week">Expenses per week</string>
+    <string name="navigation_profile">Profile</string>
+    <string name="navigation_logout">Logout</string>
 </resources>

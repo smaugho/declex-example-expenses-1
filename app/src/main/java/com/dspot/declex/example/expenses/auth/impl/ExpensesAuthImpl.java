@@ -1,5 +1,6 @@
 package com.dspot.declex.example.expenses.auth.impl;
 
+import com.dspot.declex.example.expenses.auth.ExpensesApp;
 import com.dspot.declex.example.expenses.auth.ExpensesAuth;
 import com.dspot.declex.example.expenses.auth.ExpensesUser;
 import com.dspot.declex.example.expenses.auth.impl.firebase.FirestoreUser;
@@ -16,7 +17,7 @@ import io.reactivex.Single;
 public class ExpensesAuthImpl implements ExpensesAuth {
 
     @Bean
-    ExpensesAppImpl expensesApp;
+    ExpensesApp expensesApp;
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 

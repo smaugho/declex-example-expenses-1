@@ -40,8 +40,8 @@ public class LoginFragment extends Fragment {
     }
 
     @Click({R.id.loginButton})
-    public void signIn() {
-        loginViewModel.signIn(editTextEmail.getText().toString(), editTextPassword.getText().toString());
+    public void signIn(String editTextEmailText, String editTextPasswordText) {
+        loginViewModel.signIn(editTextEmailText, editTextPasswordText);
     }
 
     @Click({R.id.signUpAction})

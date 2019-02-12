@@ -15,8 +15,4 @@ public class SplashFragment extends Fragment {
     @ViewModel
     SplashViewModel splashViewModel;
 
-    @AfterViews
-    public void init() {
-        splashViewModel.checkCurrentUser();
-    }
 }

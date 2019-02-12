@@ -4,10 +4,9 @@ import android.arch.lifecycle.ViewModel;
 
 import com.dspot.declex.example.expenses.auth.ExpensesAuth;
 import com.dspot.declex.example.expenses.auth.ExpensesUser;
-import com.dspot.declex.example.expenses.auth.impl.ExpensesAuthImpl;
 import com.dspot.declex.example.expenses.ui.auth.AuthNavigation;
 
-import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 
@@ -21,8 +20,9 @@ public class SplashViewModel extends ViewModel {
     AuthNavigation authNavigation;
 
     @Bean
-    ExpensesAuthImpl expensesAuth;
+    ExpensesAuth expensesAuth;
 
+    @AfterInject
     public void checkCurrentUser() {
         ExpensesUser currentUser = expensesAuth.currentUser();
         if (currentUser != null) {
