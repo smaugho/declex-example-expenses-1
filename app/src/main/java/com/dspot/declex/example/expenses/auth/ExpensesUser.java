@@ -1,4 +1,7 @@
 package com.dspot.declex.example.expenses.auth;
 
-public interface ExpensesUser {
+import com.dspot.declex.example.expenses.vo.User;
+
+public interface ExpensesUser extends User {
+
 }

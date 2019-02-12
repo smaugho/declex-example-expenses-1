@@ -9,4 +9,14 @@ public class UserImpl implements User {
     public UserImpl(FirebaseUser firebaseUser) {
         this.firebaseUser = firebaseUser;
     }
+
+    @Override
+    public String getId() {
+        return null;
+    }
+
+    @Override
+    public String displayName() {
+        return null;
+    }
 }

@@ -33,12 +33,14 @@
         android:paddingBottom="64dp">
 
         <EditText
+            android:text="Alberto Marturelo"
             android:id="@+id/editTextName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_input_name" />
 
         <EditText
+            android:text="amarturelo@gmail.com"
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,6 +50,7 @@
 
         <EditText
             android:id="@+id/editTextPassword"
+            android:text="elpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -56,6 +59,7 @@
             android:paddingTop="16dp" />
 
         <EditText
+            android:text="elpassword"
             android:id="@+id/editTextPasswordConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

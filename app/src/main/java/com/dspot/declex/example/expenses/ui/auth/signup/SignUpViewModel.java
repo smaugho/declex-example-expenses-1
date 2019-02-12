@@ -4,6 +4,7 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.dspot.declex.example.expenses.auth.impl.ExpensesAuthImpl;
+import com.dspot.declex.example.expenses.ui.auth.AuthNavigation;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
@@ -18,6 +19,9 @@ public class SignUpViewModel extends ViewModel {
     @Bean
     ExpensesAuthImpl expensesAuth;
 
+    @Bean
+    AuthNavigation authNavigation;
+
     MutableLiveData<Exception> errors = new MutableLiveData<>();
 
     public void signUpWithEmail(String name, String email, String password) {
@@ -28,7 +32,7 @@ public class SignUpViewModel extends ViewModel {
                     if (throwable != null)
                         errors.postValue((Exception) throwable);
                     else {
-
+                        authNavigation.goToMain();
                     }
                 });
     }

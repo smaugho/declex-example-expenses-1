@@ -3,9 +3,11 @@ package com.dspot.declex.example.expenses.ui.auth.signup;
 
 import android.support.v4.app.Fragment;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.dspot.declex.example.expenses.R;
 
+import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
@@ -27,8 +29,18 @@ public class SignUpFragment extends Fragment {
     @ViewModel
     SignUpViewModel signUpViewModel;
 
+    @AfterInject
+    public void init() {
+        signUpViewModel.errors.observe(this, e -> {
+            if (e != null)
+                Toast.makeText(requireContext(), e.toString(), Toast.LENGTH_SHORT).show();
+        });
+    }
+
     @Click(R.id.signUpAction)
     public void signUp() {
-        //signUpViewModel.signUpWithEmail(editTextName.getText(), editTextEmail.getText(), editTextPassword.getText());
+        signUpViewModel.signUpWithEmail(editTextName.getText().toString()
+                , editTextEmail.getText().toString()
+                , editTextPassword.getText().toString());
     }
 }

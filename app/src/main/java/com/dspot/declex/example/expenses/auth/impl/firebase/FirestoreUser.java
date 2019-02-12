@@ -1,21 +1,26 @@
 package com.dspot.declex.example.expenses.auth.impl.firebase;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import io.reactivex.Completable;
-import io.reactivex.CompletableEmitter;
-import io.reactivex.CompletableOnSubscribe;
+import org.androidannotations.annotations.EBean;
 
+import java.util.HashMap;
+import java.util.Map;
+
+@EBean
 public class FirestoreUser {
+
+    private static final String USERS = "users";
+    private static final String FIELD_DISPLAY_NAME = "display_name";
 
     static FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    static public Completable createUser() {
-        return Completable.create(new CompletableOnSubscribe() {
-            @Override
-            public void subscribe(CompletableEmitter emitter) throws Exception {
+    static public Task<Void> createUser(String userId, String userDisplayName) {
+        Map<String, Object> data = new HashMap<>();
+        data.put(FIELD_DISPLAY_NAME, userDisplayName);
 
-            }
-        });
+        return db.collection(USERS).document(userId)
+                .set(data);
     }
 }

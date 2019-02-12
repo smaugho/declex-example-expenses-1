@@ -10,4 +10,14 @@ public class ExpensesUserImpl implements ExpensesUser {
     public ExpensesUserImpl(FirebaseUser firebaseUser) {
         this.firebaseUser = firebaseUser;
     }
+
+    @Override
+    public String getId() {
+        return null;
+    }
+
+    @Override
+    public String displayName() {
+        return null;
+    }
 }
