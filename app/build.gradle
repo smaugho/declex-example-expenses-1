@@ -38,7 +38,7 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
 
     def lifecycle_version = "1.1.1"
-    def declex_version = "2.0.a.29"
+    def declex_version = "2.0.a.30"
 
     //DecleX
     annotationProcessor "com.dspot:declex:$declex_version"

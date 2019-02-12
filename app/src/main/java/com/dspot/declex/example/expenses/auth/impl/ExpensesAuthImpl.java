@@ -52,4 +52,5 @@ public class ExpensesAuthImpl implements ExpensesAuth {
             return new ExpensesUserImpl(current);
         return null;
     }
+
 }

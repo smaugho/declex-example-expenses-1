@@ -22,13 +22,13 @@ allprojects {
         jcenter()
         google()
     }
+
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << '-XprintProcessorInfo'
+        options.compilerArgs << '-XprintRounds'
+    }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-
-tasks.withType(JavaCompile) {
-    options.compilerArgs << '-XprintProcessorInfo'
-    options.compilerArgs << '-XprintRounds'
 }
