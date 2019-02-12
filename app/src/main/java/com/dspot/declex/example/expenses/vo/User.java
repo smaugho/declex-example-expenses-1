@@ -5,4 +5,6 @@ public interface User {
 
     String displayName();
 
+    String email();
+
 }

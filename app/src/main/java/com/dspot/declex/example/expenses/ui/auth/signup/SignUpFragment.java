@@ -21,15 +21,6 @@ import static com.dspot.declex.actions.Action.$Toast;
 @EFragment(R.layout.fragment_sign_up)
 public class SignUpFragment extends Fragment {
 
-    @ViewById
-    EditText editTextName;
-
-    @ViewById
-    EditText editTextEmail;
-
-    @ViewById
-    EditText editTextPassword;
-
     @ViewModel
     SignUpViewModel signUpViewModel;
 

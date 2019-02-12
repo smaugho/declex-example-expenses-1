@@ -23,4 +23,8 @@ public class FirestoreUser {
         return db.collection(USERS).document(userId)
                 .set(data);
     }
+
+    public static String getUserById(String id) {
+        return id;
+    }
 }

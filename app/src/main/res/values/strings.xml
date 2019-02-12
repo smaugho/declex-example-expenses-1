@@ -25,4 +25,5 @@
     <string name="navigation_expenses_per_week">Expenses per week</string>
     <string name="navigation_profile">Profile</string>
     <string name="navigation_logout">Logout</string>
+    <string name="action_save">Save</string>
 </resources>

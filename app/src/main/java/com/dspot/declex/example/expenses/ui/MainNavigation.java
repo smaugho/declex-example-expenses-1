@@ -15,7 +15,6 @@ import static com.dspot.declex.Action.$SplashFragment;
 public class MainNavigation extends BaseNavigation {
 
     public void goToExpensesList() {
-        $LoginFragment();
     }
 
     public void goToProfile() {
@@ -33,5 +32,8 @@ public class MainNavigation extends BaseNavigation {
     public void goToLogin() {
         $AuthActivity();
         finish();
+    }
+
+    public void goToExpensesPerWeek() {
     }
 }

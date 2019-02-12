@@ -29,12 +29,6 @@ import static com.dspot.declex.actions.Action.$Toast;
 @EFragment(R.layout.fragment_login)
 public class LoginFragment extends Fragment {
 
-    @ViewById
-    EditText editTextEmail;
-
-    @ViewById
-    EditText editTextPassword;
-
     @Bean
     AuthNavigation authNavigation;
 
