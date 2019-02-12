@@ -16,11 +16,16 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
+import pl.com.dspot.archiannotations.annotation.EBinder;
+import pl.com.dspot.archiannotations.annotation.Observer;
 import pl.com.dspot.archiannotations.annotation.ViewModel;
+
+import static com.dspot.declex.actions.Action.$Toast;
 
 /**
  * A placeholder fragment containing a simple view.
  */
+@EBinder
 @EFragment(R.layout.fragment_login)
 public class LoginFragment extends Fragment {
 
@@ -35,6 +40,11 @@ public class LoginFragment extends Fragment {
 
     @ViewModel
     LoginViewModel loginViewModel;
+
+    @Observer
+    void errors(Exception e) {
+        $Toast(e.getMessage());
+    }
 
     public LoginFragment() {
     }

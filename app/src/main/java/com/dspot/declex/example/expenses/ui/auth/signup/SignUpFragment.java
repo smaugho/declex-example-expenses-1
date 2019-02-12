@@ -12,8 +12,12 @@ import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
+import pl.com.dspot.archiannotations.annotation.EBinder;
+import pl.com.dspot.archiannotations.annotation.Observer;
 import pl.com.dspot.archiannotations.annotation.ViewModel;
 
+import static com.dspot.declex.actions.Action.$Toast;
+@EBinder
 @EFragment(R.layout.fragment_sign_up)
 public class SignUpFragment extends Fragment {
 
@@ -28,6 +32,11 @@ public class SignUpFragment extends Fragment {
 
     @ViewModel
     SignUpViewModel signUpViewModel;
+
+    @Observer
+    void errors(Exception e) {
+        $Toast(e.getMessage());
+    }
 
     @AfterInject
     public void init() {

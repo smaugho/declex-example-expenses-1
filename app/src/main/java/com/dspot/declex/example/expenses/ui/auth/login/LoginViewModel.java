@@ -13,6 +13,7 @@ import org.androidannotations.annotations.EBean;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import pl.com.dspot.archiannotations.annotation.EViewModel;
+import pl.com.dspot.archiannotations.annotation.Observable;
 
 @EBean
 @EViewModel
@@ -24,7 +25,8 @@ public class LoginViewModel extends ViewModel {
     @Bean
     AuthNavigation authNavigation;
 
-    MutableLiveData<Exception> errors = new MutableLiveData<>();
+    @Observable
+    MutableLiveData<Exception> errors;
 
     public void signIn(String email, String password) {
         expensesAuth
