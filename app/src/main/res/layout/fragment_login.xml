@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.auth.login.LoginFragment"
-    tools:showIn="@layout/activity_auth">
+    tools:context=".ui.auth.login.LoginFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -45,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="64dp"
             android:layout_marginRight="64dp"
-            android:paddingTop="8dp" />
+            android:paddingTop="16dp" />
 
         <Button
             android:id="@+id/loginButton"

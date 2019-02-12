@@ -5,35 +5,64 @@
     android:layout_height="match_parent"
     tools:context=".ui.auth.signup.SignUpFragment">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/inputParent"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="logo"
+            android:textAllCaps="true"
+            android:textSize="64sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
     <LinearLayout
+        android:id="@+id/inputParent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginLeft="64dp"
+        android:layout_marginRight="64dp"
         android:orientation="vertical"
         android:paddingBottom="64dp">
 
         <EditText
             android:id="@+id/editTextName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_input_name" />
 
         <EditText
-            android:layout_marginTop="16dp"
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/hint_input_email"
+            android:paddingTop="16dp" />
 
         <EditText
-            android:layout_marginTop="16dp"
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/hint_input_password"
+            android:inputType="textPassword"
+            android:paddingTop="16dp" />
 
         <EditText
-            android:layout_marginTop="16dp"
             android:id="@+id/editTextPasswordConfirm"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="@string/hint_input_password_confirm"
+            android:inputType="textPassword"
+            android:paddingTop="16dp" />
 
         <Button
             android:id="@+id/signUpAction"

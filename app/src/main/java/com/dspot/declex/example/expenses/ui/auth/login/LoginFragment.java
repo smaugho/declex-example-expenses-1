@@ -7,8 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dspot.declex.example.expenses.R;
+import com.dspot.declex.example.expenses.ui.auth.AuthNavigation;
 import com.dspot.declex.example.expenses.ui.auth.splash.SplashViewModel;
 
+import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 
 import pl.com.dspot.archiannotations.annotation.ViewModel;
@@ -19,9 +22,17 @@ import pl.com.dspot.archiannotations.annotation.ViewModel;
 @EFragment(R.layout.fragment_login)
 public class LoginFragment extends Fragment {
 
+    @Bean
+    AuthNavigation authNavigation;
+
     @ViewModel
     LoginViewModel loginViewModel;
 
     public LoginFragment() {
+    }
+
+    @Click({R.id.signUpAction})
+    public void goToSignUp() {
+        authNavigation.goToSignUp();
     }
 }
