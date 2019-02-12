@@ -7,7 +7,7 @@ import io.reactivex.Single;
 public interface ExpensesAuth {
     Single<User> signInWithEmailAndPassword(String email, String password);
 
-    Single<User> createUserWithEmailAndPassword(String email, String password);
+    Single<User> createUserWithEmailAndPassword(String name, String email, String password);
 
     ExpensesUser currentUser();
 }

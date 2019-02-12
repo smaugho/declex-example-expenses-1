@@ -54,6 +54,7 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
 
     implementation 'com.google.firebase:firebase-auth:16.1.0'
+    implementation 'com.google.firebase:firebase-firestore:18.0.1'
     implementation 'com.google.firebase:firebase-core:16.0.7'
 
     implementation "io.reactivex.rxjava2:rxjava:2.2.0"
