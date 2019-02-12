@@ -10,12 +10,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.dspot.declex.example.expenses.R;
+import com.dspot.declex.example.expenses.ui.auth.AuthNavigation;
+import com.dspot.declex.example.expenses.ui.auth.splash.SplashViewModel;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 
+import pl.com.dspot.archiannotations.annotation.EBinder;
+import pl.com.dspot.archiannotations.annotation.ViewModel;
+@EBinder
 @OptionsMenu(R.menu.menu_main)
 @EActivity(R.layout.activity_main)
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,6 +34,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @ViewById(R.id.nav_view)
     NavigationView navigationView;
+
+    @Bean
+    MainNavigation mainNavigation;
+
+    @ViewModel
+    MainViewModel mainViewModel;
 
     @AfterViews
     public void init() {
@@ -53,17 +65,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        drawer.closeDrawer(GravityCompat.START);
 
         if (id == R.id.nav_expenses_list) {
 
         } else if (id == R.id.nav_expenses_per_week) {
 
         } else if (id == R.id.nav_profile) {
+            goToProfile();
+        } else if (id == R.id.nav_logout) {
 
-        }
+            logout();
 
-        drawer.closeDrawer(GravityCompat.START);
+            return false;
+        } else
+            return false;
+
         return true;
+    }
+
+    private void logout() {
+        mainViewModel.logout();
+    }
+
+    private void goToProfile() {
+        mainNavigation.goToProfile();
     }
 
     @Override
