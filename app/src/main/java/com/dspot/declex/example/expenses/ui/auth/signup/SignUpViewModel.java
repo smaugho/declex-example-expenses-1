@@ -9,6 +9,7 @@ import com.dspot.declex.example.expenses.ui.auth.AuthNavigation;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 import pl.com.dspot.archiannotations.annotation.EViewModel;
 
@@ -28,6 +29,7 @@ public class SignUpViewModel extends ViewModel {
         expensesAuth
                 .createUserWithEmailAndPassword(name, email, password)
                 .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((user, throwable) -> {
                     if (throwable != null)
                         errors.postValue((Exception) throwable);

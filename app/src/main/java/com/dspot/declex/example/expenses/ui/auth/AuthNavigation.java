@@ -17,6 +17,7 @@ public class AuthNavigation extends BaseNavigation {
 
     public void goToMain() {
         $MainActivity();
+        finish();
     }
 
     public void goToSplash() {

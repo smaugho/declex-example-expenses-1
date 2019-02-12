@@ -36,7 +36,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="64dp"
-            android:layout_marginRight="64dp" />
+            android:layout_marginRight="64dp"
+            android:inputType="textEmailAddress"
+            android:text="amarturelo@gmail.com" />
 
         <EditText
             android:id="@+id/editTextPassword"
@@ -44,7 +46,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="64dp"
             android:layout_marginRight="64dp"
-            android:paddingTop="16dp" />
+            android:inputType="textPassword"
+            android:paddingTop="16dp"
+            android:text="elpassword" />
 
         <Button
             android:id="@+id/loginButton"
