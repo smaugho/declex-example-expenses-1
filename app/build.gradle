@@ -35,7 +35,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     def lifecycle_version = "1.1.1"
-    def declex_version = "2.0.a.29"
+    def declex_version = "2.0.a.30"
 
     //DecleX
     annotationProcessor "com.dspot:declex:$declex_version"

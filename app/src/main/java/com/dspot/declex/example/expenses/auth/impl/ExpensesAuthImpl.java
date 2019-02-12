@@ -8,17 +8,14 @@ import com.dspot.declex.example.expenses.vo.impl.UserImpl;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.androidannotations.annotations.EBean;
+
 import io.reactivex.Single;
 
+@EBean(scope = EBean.Scope.Singleton)
 public class ExpensesAuthImpl implements ExpensesAuth {
 
     ExpensesApp expensesApp = ExpensesAppImpl.getInstance();
-
-    private static ExpensesAuth instance = new ExpensesAuthImpl();
-
-    public static ExpensesAuth getInstance() {
-        return instance;
-    }
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
@@ -53,4 +50,5 @@ public class ExpensesAuthImpl implements ExpensesAuth {
             return new ExpensesUserImpl(current);
         return null;
     }
+
 }
