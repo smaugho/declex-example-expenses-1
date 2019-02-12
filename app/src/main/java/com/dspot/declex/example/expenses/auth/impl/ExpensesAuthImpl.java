@@ -3,7 +3,6 @@ package com.dspot.declex.example.expenses.auth.impl;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.dspot.declex.example.expenses.auth.ExpensesApp;
 import com.dspot.declex.example.expenses.auth.ExpensesAuth;
 import com.dspot.declex.example.expenses.auth.ExpensesUser;
 import com.dspot.declex.example.expenses.vo.User;
@@ -14,17 +13,16 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.androidannotations.annotations.Bean;
+import org.androidannotations.annotations.EBean;
+
 import io.reactivex.Single;
 
+@EBean(scope = EBean.Scope.Singleton)
 public class ExpensesAuthImpl implements ExpensesAuth {
 
-    ExpensesApp expensesApp = ExpensesAppImpl.getInstance();
-
-    private static ExpensesAuth instance = new ExpensesAuthImpl();
-
-    public static ExpensesAuth getInstance() {
-        return instance;
-    }
+    @Bean
+    ExpensesAppImpl expensesApp;
 
     FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
@@ -47,7 +45,6 @@ public class ExpensesAuthImpl implements ExpensesAuth {
                     @NonNull
                     @Override
                     public Task<AuthResult> then(@Nullable AuthResult authResult) throws Exception {
-
 
                         return null;
                     }

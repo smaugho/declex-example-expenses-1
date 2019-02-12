@@ -29,6 +29,6 @@ public class SignUpFragment extends Fragment {
 
     @Click(R.id.signUpAction)
     public void signUp() {
-        signUpViewModel.signUpWithEmail(editTextName.getText(), editTextEmail.getText(), editTextPassword.getText());
+        //signUpViewModel.signUpWithEmail(editTextName.getText(), editTextEmail.getText(), editTextPassword.getText());
     }
 }
