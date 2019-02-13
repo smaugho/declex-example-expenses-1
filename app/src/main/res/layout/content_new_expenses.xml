@@ -13,13 +13,11 @@
 
     <TextView
         android:id="@+id/hint"
+        style="@style/ExpensesCaption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:text="@string/hint_create_new_expense"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:text="@string/hint_create_new_expense" />
 
     <LinearLayout
         android:id="@+id/inputParent"

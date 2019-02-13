@@ -27,6 +27,18 @@
         <item name="android:textAllCaps">true</item>
     </style>
 
+    <style name="ExpensesCaption" parent="Base.TextAppearance.AppCompat.Caption">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ExpensesActionCaption2" parent="Base.TextAppearance.AppCompat.Caption">
+        <item name="android:textColor">@color/colorYellow</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="ExpensesEditText" parent="Base.Widget.AppCompat.EditText">
         <item name="android:background">@drawable/drawable_expenses_edit</item>
         <item name="android:padding">16dp</item>

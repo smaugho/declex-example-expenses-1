@@ -35,4 +35,6 @@
     <string name="hint_input_amount">Amount</string>
     <string name="hint_input_description">Description</string>
     <string name="hint_create_new_expense">Create a new experense</string>
+    <string name="hint_expenses_list">Expenses list</string>
+    <string name="hint_new_expenses">+Add expense</string>
 </resources>

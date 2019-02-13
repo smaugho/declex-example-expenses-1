@@ -5,6 +5,7 @@ import com.dspot.declex.example.expenses.navigation.BaseNavigation;
 import org.androidannotations.annotations.EBean;
 
 import static com.dspot.declex.Action.$AuthActivity;
+import static com.dspot.declex.Action.$ExpensesListFragment;
 import static com.dspot.declex.Action.$NewExpensesActivity;
 import static com.dspot.declex.Action.$ProfileActivity;
 import static com.dspot.declex.Action.$SignUpFragment;
@@ -14,6 +15,7 @@ import static com.dspot.declex.Action.$SplashFragment;
 public class MainNavigation extends BaseNavigation {
 
     public void goToExpensesList() {
+        $ExpensesListFragment();
     }
 
     public void goToProfile() {
