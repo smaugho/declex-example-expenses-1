@@ -115,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void goToExpensesPerWeek() {
         mainNavigation.goToExpensesPerWeek();
-
     }
 
     private void logout() {

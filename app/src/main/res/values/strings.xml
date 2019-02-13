@@ -37,4 +37,7 @@
     <string name="hint_create_new_expense">Create a new experense</string>
     <string name="hint_expenses_list">Expenses list</string>
     <string name="hint_new_expenses">+Add expense</string>
+    <string name="text_button_filter">Filter by</string>
+    <string name="hint_from">From</string>
+    <string name="hint_to">To</string>
 </resources>
