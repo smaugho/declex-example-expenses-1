@@ -17,4 +17,10 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="ExpensesButton" parent="Base.TextAppearance.AppCompat.Button">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorTextButton</item>
+        <item name="android:background">@drawable/drawable_button_selector</item>
+    </style>
+
 </resources>

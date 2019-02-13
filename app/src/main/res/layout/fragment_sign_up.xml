@@ -33,44 +33,45 @@
         android:paddingBottom="64dp">
 
         <EditText
-            android:text="Alberto Marturelo"
             android:id="@+id/editTextName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_input_name" />
+            android:hint="@string/hint_input_name"
+            android:text="Alberto Marturelo" />
 
         <EditText
-            android:text="amarturelo@gmail.com"
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:hint="@string/hint_input_email"
-            android:paddingTop="16dp" />
+            android:paddingTop="16dp"
+            android:text="amarturelo@gmail.com" />
 
         <EditText
             android:id="@+id/editTextPassword"
-            android:text="elpassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:hint="@string/hint_input_password"
             android:inputType="textPassword"
-            android:paddingTop="16dp" />
+            android:paddingTop="16dp"
+            android:text="elpassword" />
 
         <EditText
-            android:text="elpassword"
             android:id="@+id/editTextPasswordConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:hint="@string/hint_input_password_confirm"
             android:inputType="textPassword"
-            android:paddingTop="16dp" />
+            android:paddingTop="16dp"
+            android:text="elpassword" />
 
         <Button
             android:id="@+id/signUpAction"
-            android:layout_width="wrap_content"
+            style="@style/ExpensesButton"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="64dp"

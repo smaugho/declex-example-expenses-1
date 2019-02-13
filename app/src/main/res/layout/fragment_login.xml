@@ -28,6 +28,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginLeft="64dp"
+        android:layout_marginRight="64dp"
         android:orientation="vertical"
         android:paddingBottom="64dp">
 
@@ -35,8 +37,6 @@
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="64dp"
-            android:layout_marginRight="64dp"
             android:inputType="textEmailAddress"
             android:text="amarturelo@gmail.com" />
 
@@ -44,15 +44,14 @@
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="64dp"
-            android:layout_marginRight="64dp"
             android:inputType="textPassword"
             android:paddingTop="16dp"
             android:text="elpassword" />
 
         <Button
             android:id="@+id/loginButton"
-            android:layout_width="wrap_content"
+            style="@style/ExpensesButton"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="48dp"
