@@ -28,4 +28,11 @@
     <string name="action_save">Save</string>
     <string name="title_activity_new_expenses">NewExpensesActivity</string>
     <string name="title_activity_profile">Profile</string>
+    <string name="action_create_new_expense">Create Expense</string>
+    <string name="hint_input_comment">Comment</string>
+    <string name="hint_input_date">Date</string>
+    <string name="hint_input_time">Time</string>
+    <string name="hint_input_amount">Amount</string>
+    <string name="hint_input_description">Description</string>
+    <string name="hint_create_new_expense">Create a new experense</string>
 </resources>
