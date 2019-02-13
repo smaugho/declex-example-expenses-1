@@ -1,16 +1,15 @@
 package com.dspot.declex.example.expenses.ui.main.profile;
 
 
-import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.dspot.declex.example.expenses.R;
 import com.dspot.declex.example.expenses.auth.ExpensesUser;
-import com.dspot.declex.example.expenses.ui.auth.splash.SplashViewModel;
 
 import org.androidannotations.annotations.AfterViews;
-import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
 import pl.com.dspot.archiannotations.annotation.EBinder;
@@ -18,10 +17,13 @@ import pl.com.dspot.archiannotations.annotation.Observer;
 import pl.com.dspot.archiannotations.annotation.ViewModel;
 
 @EBinder
-@EFragment(R.layout.fragment_profile)
-public class ProfileFragment extends Fragment {
+@EActivity(R.layout.activity_profile)
+public class ProfileActivity extends AppCompatActivity {
     @ViewModel
     ProfileViewModel profileViewModel;
+
+    @ViewById
+    Toolbar toolbar;
 
     @Observer
     void expensesUser(ExpensesUser expensesUser) {
@@ -41,6 +43,8 @@ public class ProfileFragment extends Fragment {
 
     @AfterViews
     public void init() {
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(R.string.title_activity_profile);
         profileViewModel.init();
     }
 

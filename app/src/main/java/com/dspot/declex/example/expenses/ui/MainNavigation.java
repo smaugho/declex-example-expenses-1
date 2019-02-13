@@ -5,9 +5,8 @@ import com.dspot.declex.example.expenses.navigation.BaseNavigation;
 import org.androidannotations.annotations.EBean;
 
 import static com.dspot.declex.Action.$AuthActivity;
-import static com.dspot.declex.Action.$LoginFragment;
-import static com.dspot.declex.Action.$MainActivity;
-import static com.dspot.declex.Action.$ProfileFragment;
+import static com.dspot.declex.Action.$NewExpensesActivity;
+import static com.dspot.declex.Action.$ProfileActivity;
 import static com.dspot.declex.Action.$SignUpFragment;
 import static com.dspot.declex.Action.$SplashFragment;
 
@@ -18,7 +17,7 @@ public class MainNavigation extends BaseNavigation {
     }
 
     public void goToProfile() {
-        $ProfileFragment();
+        $ProfileActivity();
     }
 
     public void goToSplash() {
@@ -35,5 +34,9 @@ public class MainNavigation extends BaseNavigation {
     }
 
     public void goToExpensesPerWeek() {
+    }
+
+    public void goToCreateNewExpenses() {
+        $NewExpensesActivity();
     }
 }
