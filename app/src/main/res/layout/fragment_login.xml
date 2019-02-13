@@ -59,11 +59,11 @@
 
         <TextView
             android:id="@+id/signUpAction"
+            style="@style/ExpensesActionCaption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:paddingTop="64dp"
-            android:text="@string/action_create_a_new_account"
-            android:textAllCaps="true" />
+            android:layout_marginTop="64dp"
+            android:text="@string/action_create_a_new_account" />
     </LinearLayout>
 </RelativeLayout>

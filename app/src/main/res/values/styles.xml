@@ -23,4 +23,8 @@
         <item name="android:background">@drawable/drawable_button_selector</item>
     </style>
 
+    <style name="ExpensesActionCaption" parent="Base.TextAppearance.AppCompat.Caption">
+        <item name="android:textAllCaps">true</item>
+    </style>
+
 </resources>
