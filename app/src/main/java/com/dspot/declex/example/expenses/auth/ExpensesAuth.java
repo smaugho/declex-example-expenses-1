@@ -7,7 +7,6 @@ import org.androidannotations.annotations.ImplementedBy;
 
 import io.reactivex.Single;
 
-@ImplementedBy(ExpensesAuthImpl.class)
 public interface ExpensesAuth {
     Single<User> signInWithEmailAndPassword(String email, String password);
 
