@@ -5,7 +5,9 @@ import android.support.v4.app.Fragment;
 
 import com.dspot.declex.annotation.Populate;
 import com.dspot.declex.example.expenses.R;
+import com.dspot.declex.example.expenses.ui.MainNavigation;
 
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 
@@ -29,6 +31,9 @@ public class ExpensesListFragment extends Fragment {
     @Populate
     List<ExpensesItemViewModel> expensesList;
 
+    @Bean
+    MainNavigation mainNavigation;
+
     @Observer
     void errors(Exception e) {
         $Toast(e.getMessage());
@@ -38,6 +43,11 @@ public class ExpensesListFragment extends Fragment {
     void expensesItems(List<ExpensesItemViewModel> expensesItems) {
         this.expensesList = expensesItems;
         $Populate(expensesList);
+    }
+
+    @Click(R.id.newExpensesAction)
+    void goToCreateNewExpenses() {
+        mainNavigation.goToCreateNewExpenses();
     }
 
     @Click(R.id.actionEdit)
@@ -53,7 +63,7 @@ public class ExpensesListFragment extends Fragment {
                 .positiveButton(android.R.string.ok)
                 .negativeButton(android.R.string.cancel)
                 .dialog();
-        if($AlertDialog.PositiveButtonPressed){
+        if ($AlertDialog.PositiveButtonPressed) {
             model.removeExpense();
         }
     }
