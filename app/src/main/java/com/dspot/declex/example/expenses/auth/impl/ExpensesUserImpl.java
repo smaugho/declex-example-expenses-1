@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.Date;
+import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
@@ -44,14 +45,14 @@ public class ExpensesUserImpl implements ExpensesUser {
     }
 
     @Override
-    public Flowable<Expense> expenses() {
+    public Flowable<List<Expense>> expenses() {
         return FirestoreExpenses.getExpensesByUser(getId());
     }
 
     @Override
     public Completable createNewExpense(String description, double amount, Date date, String comment) {
 
-        Expense expense = new Expense_();
+        Expense expense = new Expense();
         expense.setAmount(amount);
         expense.setComment(comment);
         expense.setDescription(comment);

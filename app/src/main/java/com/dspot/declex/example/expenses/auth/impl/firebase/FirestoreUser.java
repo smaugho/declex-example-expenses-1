@@ -11,7 +11,7 @@ import java.util.Map;
 @EBean
 public class FirestoreUser {
 
-    private static final String USERS = "users";
+    static final String USERS = "users";
     private static final String FIELD_DISPLAY_NAME = "display_name";
 
     static FirebaseFirestore db = FirebaseFirestore.getInstance();

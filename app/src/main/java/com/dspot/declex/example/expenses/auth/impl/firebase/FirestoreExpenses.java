@@ -6,10 +6,15 @@ import com.dspot.declex.example.expenses.vo.Expense;
 import com.dspot.declex.example.expenses.vo.Expense_;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Nullable;
 
@@ -27,28 +32,35 @@ public class FirestoreExpenses {
 
     private static final String EXPENSES = "expenses";
 
-    static public Flowable<Expense> getExpensesByUser(String userId) {
+    static public Flowable<List<Expense>> getExpensesByUser(String userId) {
 
-        return Flowable.create(new FlowableOnSubscribe<DocumentSnapshot>() {
+        return Flowable.create(new FlowableOnSubscribe<QuerySnapshot>() {
             @Override
-            public void subscribe(FlowableEmitter<DocumentSnapshot> emitter) throws Exception {
-                db.collection(EXPENSES)
+            public void subscribe(FlowableEmitter<QuerySnapshot> emitter) throws Exception {
+                db.collection(FirestoreUser.USERS)
                         .document(userId)
-                        .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                        .collection(EXPENSES)
+                        .addSnapshotListener(new EventListener<QuerySnapshot>() {
                             @Override
-                            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
                                 if (e != null)
                                     emitter.tryOnError(e);
                                 else
-                                    emitter.onNext(documentSnapshot);
+                                    emitter.onNext(queryDocumentSnapshots);
                             }
-                        });
+                        })
+                ;
             }
         }, BackpressureStrategy.BUFFER)
-                .map(new Function<DocumentSnapshot, Expense>() {
+                .map(new Function<QuerySnapshot, List<Expense>>() {
                     @Override
-                    public Expense apply(DocumentSnapshot documentSnapshot) throws Exception {
-                        Expense expense = documentSnapshot.toObject(Expense_.class);
+                    public List<Expense> apply(QuerySnapshot documentSnapshot) throws Exception {
+                        List<Expense> expense = new ArrayList<>();
+
+                        for (DocumentSnapshot document : documentSnapshot) {
+                            expense.add(document.toObject(Expense_.class));
+                        }
+
                         return expense;
                     }
                 });
@@ -58,18 +70,17 @@ public class FirestoreExpenses {
         return Completable.create(new CompletableOnSubscribe() {
             @Override
             public void subscribe(CompletableEmitter emitter) throws Exception {
-                db.collection(EXPENSES)
+                db.collection(FirestoreUser.USERS)
                         .document(userId)
-                        .set(expense)
-                        .continueWith(new Continuation<Void, Object>() {
+                        .collection(EXPENSES)
+                        .add(expense)
+                        .continueWith(new Continuation<DocumentReference, Object>() {
                             @Override
-                            public Object then(@NonNull Task<Void> task) throws Exception {
-
+                            public Object then(@NonNull Task<DocumentReference> task) throws Exception {
                                 if (task.isSuccessful())
                                     emitter.onComplete();
                                 else
                                     emitter.tryOnError(task.getException());
-
                                 return null;
                             }
                         });
