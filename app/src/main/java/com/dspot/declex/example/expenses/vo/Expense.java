@@ -1,12 +1,13 @@
 package com.dspot.declex.example.expenses.vo;
 
 import com.dspot.declex.annotation.UseModel;
-import com.google.firebase.firestore.DocumentSnapshot;
 
 import java.util.Date;
 
 @UseModel
 public class Expense {
+
+    private String _id;
 
     private double _amount;
 
@@ -15,6 +16,14 @@ public class Expense {
     private String _comment;
 
     private Date _date;
+
+    public String getId() {
+        return _id;
+    }
+
+    public void setId(String id) {
+        this._id = id;
+    }
 
     public void setAmount(double _amount) {
         this._amount = _amount;
@@ -98,13 +107,4 @@ public class Expense {
     private static final String EXPENSES_COMMENT = "comment";
     private static final String EXPENSES_DATE = "date";
 
-    public static Expense createFromDocumentSnapshot(DocumentSnapshot documentSnapshot) {
-        Expense_ expense = new Expense_();
-        expense.setAmount(documentSnapshot.getDouble(EXPENSES_AMOUNT));
-        expense.setComment(documentSnapshot.getString(EXPENSES_DESCRIPTION));
-        expense.setDescription(documentSnapshot.getString(EXPENSES_COMMENT));
-        expense.setDate(documentSnapshot.getDate(EXPENSES_DATE));
-
-        return expense;
-    }
 }
