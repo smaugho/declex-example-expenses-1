@@ -24,8 +24,8 @@ public class ExpensesListViewModel extends android.arch.lifecycle.ViewModel impl
 
     @ViewModel
     ExpensesItemViewModel itemViewModel; //Note I decided to have the ItemViewModel here to don't expose the Model (Expense) to the View (ExpensesListFragment),
-                                         //but you could put this one on the View, and here have a MutableLiveData<List<Expense_>> expenses;, and then observer that list on the View
-                                         //And create the ItemViewModelList there in the view.
+    //but you could put this one on the View, and here have a MutableLiveData<List<Expense_>> expenses;, and then observer that list on the View
+    //And create the ItemViewModelList there in the view.
 
     @Observable
     MutableLiveData<List<ExpensesItemViewModel>> expensesItems;
@@ -37,7 +37,8 @@ public class ExpensesListViewModel extends android.arch.lifecycle.ViewModel impl
     }
 
 
-    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME) //I added this like an observer, just for you to know that it works ;)
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+        //I added this like an observer, just for you to know that it works ;)
     void updateDependencies() {
 
         //I'll create here some mocked data
@@ -45,22 +46,22 @@ public class ExpensesListViewModel extends android.arch.lifecycle.ViewModel impl
 
         Expense_ expense = new Expense_();
         expense.setDescription("This is a small expense");
-        expense.setPrice(32.4f);
+        expense.setAmount(32.4f);
         myExpenses.add(expense);
 
         expense = new Expense_();
         expense.setDescription("This is a medium expense");
-        expense.setPrice(150.56f);
+        expense.setAmount(150.56f);
         myExpenses.add(expense);
 
         expense = new Expense_();
         expense.setDescription("This is a big expense");
-        expense.setPrice(1500.56f);
+        expense.setAmount(1500.56f);
         myExpenses.add(expense);
 
         expense = new Expense_();
         expense.setDescription("And this is the last one");
-        expense.setPrice(1240.56f);
+        expense.setAmount(1240.56f);
         myExpenses.add(expense);
 
         expensesItems.setValue(new ItemViewModelList<>(itemViewModel, myExpenses));

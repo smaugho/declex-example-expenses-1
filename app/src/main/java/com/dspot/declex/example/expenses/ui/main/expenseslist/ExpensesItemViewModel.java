@@ -1,13 +1,9 @@
 package com.dspot.declex.example.expenses.ui.main.expenseslist;
 
-import android.arch.lifecycle.LifecycleObserver;
-
 import com.dspot.declex.example.expenses.vo.Expense_;
 
-import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 
-import java.util.List;
 import java.util.Locale;
 
 import api.ItemViewModel;
@@ -24,7 +20,7 @@ public class ExpensesItemViewModel extends ItemViewModel<Expense_> {
     }
 
     String getExpenseAmount() {
-        return format(Locale.US, "%.02f", model.getPrice());
+        return format(Locale.US, "%.02f", model.getAmount());
     }
 
     void editExpense() {
@@ -35,7 +31,7 @@ public class ExpensesItemViewModel extends ItemViewModel<Expense_> {
 //        notifyModelsModified();
 
         //Or you could edit just one specific expense, doing it in the click on remove
-        model.setPrice(model.getPrice() + 5);
+        model.setAmount(model.getAmount() + 5);
         notifyModelsModified();
 
         //Note you should place then a listener to that with
