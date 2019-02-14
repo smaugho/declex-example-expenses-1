@@ -52,6 +52,11 @@ public class ExpensesListFragment extends Fragment {
         mainNavigation.goToCreateNewExpenses();
     }
 
+    @Click(R.id.rootParent)
+    void goToExpenseDetails() {
+        mainNavigation.goToExpenseDetails();
+    }
+
     @Click(R.id.actionEdit)
     void editExpense(ExpensesItemViewModel model) {
         model.editExpense();

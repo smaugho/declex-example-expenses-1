@@ -5,6 +5,7 @@ import com.dspot.declex.example.expenses.navigation.BaseNavigation;
 import org.androidannotations.annotations.EBean;
 
 import static com.dspot.declex.Action.$AuthActivity;
+import static com.dspot.declex.Action.$ExpenseDetailsFragment;
 import static com.dspot.declex.Action.$ExpensesListFragment;
 import static com.dspot.declex.Action.$ExpensesPerWeekFragment;
 import static com.dspot.declex.Action.$NewExpensesActivity;
@@ -42,5 +43,9 @@ public class MainNavigation extends BaseNavigation {
 
     public void goToCreateNewExpenses() {
         $NewExpensesActivity();
+    }
+
+    public void goToExpenseDetails() {
+        $ExpenseDetailsFragment();
     }
 }
