@@ -13,6 +13,7 @@ import org.androidannotations.annotations.EBean;
 import java.util.Locale;
 
 import api.ItemViewModel;
+import api.SingleLiveEvent;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
@@ -24,6 +25,10 @@ import static java.lang.String.format;
 @EBean
 @EViewModel
 public class ExpensesItemViewModel extends ItemViewModel<Expense_> {
+
+    @Observable
+    SingleLiveEvent<Boolean> dialog;
+
 
     @Bean
     ExpensesAuth expensesAuth;
@@ -58,16 +63,23 @@ public class ExpensesItemViewModel extends ItemViewModel<Expense_> {
     @SuppressLint("CheckResult")
     void removeExpense() {
         if (expensesAuth.currentUser() != null) {
+            showDialog();
             expensesAuth.currentUser().removeExpense(model.getId())
                     .subscribeOn(Schedulers.newThread())
                     .subscribe(() -> {
-
-                    }, throwable -> errors.postValue((Exception) throwable))
-            ;
+                        hideDialog();
+                    }, throwable -> {
+                        hideDialog();
+                        errors.postValue((Exception) throwable);
+                    });
         }
-
-        /*//doing the same
-        this.editExpense();*/
     }
 
+    private void showDialog() {
+        dialog.postValue(true);
+    }
+
+    private void hideDialog() {
+        dialog.postValue(false);
+    }
 }

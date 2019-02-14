@@ -1,6 +1,7 @@
 package com.dspot.declex.example.expenses.ui.main.expenseslist;
 
 
+import android.app.Dialog;
 import android.support.v4.app.Fragment;
 
 import com.dspot.declex.annotation.Populate;
@@ -19,6 +20,7 @@ import pl.com.dspot.archiannotations.annotation.ViewModel;
 
 import static com.dspot.declex.actions.Action.$AlertDialog;
 import static com.dspot.declex.actions.Action.$Populate;
+import static com.dspot.declex.actions.Action.$ProgressDialog;
 import static com.dspot.declex.actions.Action.$Toast;
 
 @EBinder
@@ -66,6 +68,16 @@ public class ExpensesListFragment extends Fragment {
         if ($AlertDialog.PositiveButtonPressed) {
             model.removeExpense();
         }
+    }
+
+    Dialog dialog;
+
+    @Observer
+    void dialog(Boolean isShow) {
+        if (isShow) {
+            dialog = $ProgressDialog().dialog();
+        } else
+            dialog.dismiss();
     }
 
 }

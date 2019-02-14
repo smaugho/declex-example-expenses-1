@@ -1,5 +1,6 @@
 package com.dspot.declex.example.expenses.ui.main.newexpenses;
 
+import android.annotation.SuppressLint;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
@@ -11,6 +12,7 @@ import org.androidannotations.annotations.EBean;
 
 import java.util.Date;
 
+import api.SingleLiveEvent;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
@@ -22,7 +24,10 @@ import pl.com.dspot.archiannotations.annotation.Observable;
 public class NewExpensesViewModel extends ViewModel {
 
     @Observable
-    MutableLiveData<Exception> errors;
+    SingleLiveEvent<Exception> errors;
+
+    @Observable
+    SingleLiveEvent<Boolean> dialog;
 
     @Bean
     ExpensesAuth expensesAuth;
@@ -30,19 +35,25 @@ public class NewExpensesViewModel extends ViewModel {
     @Bean
     NewExpensesNavigation newExpensesNavigation;
 
+    @SuppressLint("CheckResult")
     public void createNewExpense(String description, double amount, String comment, Date date) {
+        showDialog();
         expensesAuth.currentUser().createNewExpense(description, amount, date, comment)
                 .subscribeOn(Schedulers.newThread())
-                .subscribe(new Action() {
-                    @Override
-                    public void run() throws Exception {
-                        newExpensesNavigation.finish();
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        errors.postValue((Exception) throwable);
-                    }
+                .subscribe(() -> {
+                    newExpensesNavigation.finish();
+                    hideDialog();
+                }, throwable -> {
+                    errors.postValue((Exception) throwable);
+                    hideDialog();
                 });
+    }
+
+    private void showDialog() {
+        dialog.postValue(true);
+    }
+
+    private void hideDialog() {
+        dialog.postValue(false);
     }
 }

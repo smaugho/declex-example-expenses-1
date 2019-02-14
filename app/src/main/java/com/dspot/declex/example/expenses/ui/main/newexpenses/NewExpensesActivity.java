@@ -1,5 +1,6 @@
 package com.dspot.declex.example.expenses.ui.main.newexpenses;
 
+import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -17,7 +18,10 @@ import pl.com.dspot.archiannotations.annotation.EBinder;
 import pl.com.dspot.archiannotations.annotation.Observer;
 import pl.com.dspot.archiannotations.annotation.ViewModel;
 
+import static com.dspot.declex.actions.Action.$AlertDialog;
+import static com.dspot.declex.actions.Action.$ProgressDialog;
 import static com.dspot.declex.actions.Action.$Toast;
+
 @EBinder
 @EActivity(R.layout.activity_new_expenses)
 public class NewExpensesActivity extends AppCompatActivity {
@@ -36,6 +40,16 @@ public class NewExpensesActivity extends AppCompatActivity {
     @Observer
     void errors(Exception e) {
         $Toast(e.getMessage());
+    }
+
+    Dialog dialog;
+
+    @Observer
+    void dialog(Boolean isShow) {
+        if (isShow) {
+            dialog = $ProgressDialog().dialog();
+        } else
+            dialog.dismiss();
     }
 
     @Click(R.id.createAction)
