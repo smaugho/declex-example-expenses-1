@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         mainViewModel.init();
+
+        mainNavigation.goToExpensesList();
     }
 
     @Override
