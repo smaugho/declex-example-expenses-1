@@ -15,4 +15,6 @@ public interface ExpensesUser extends User {
     Flowable<List<Expense>> expenses();
 
     Completable createNewExpense(String description, double amount, Date date, String comment);
+
+    Completable removeExpense(String id);
 }

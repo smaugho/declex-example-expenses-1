@@ -55,13 +55,17 @@ public class FirestoreExpenses {
                 .map(new Function<QuerySnapshot, List<Expense>>() {
                     @Override
                     public List<Expense> apply(QuerySnapshot documentSnapshot) throws Exception {
-                        List<Expense> expense = new ArrayList<>();
+                        List<Expense> expenses = new ArrayList<>();
 
                         for (DocumentSnapshot document : documentSnapshot) {
-                            expense.add(document.toObject(Expense_.class));
+
+                            Expense_ expense = document.toObject(Expense_.class);
+                            expense.setId(document.getId());
+
+                            expenses.add(expense);
                         }
 
-                        return expense;
+                        return expenses;
                     }
                 });
     }
@@ -77,6 +81,29 @@ public class FirestoreExpenses {
                         .continueWith(new Continuation<DocumentReference, Object>() {
                             @Override
                             public Object then(@NonNull Task<DocumentReference> task) throws Exception {
+                                if (task.isSuccessful())
+                                    emitter.onComplete();
+                                else
+                                    emitter.tryOnError(task.getException());
+                                return null;
+                            }
+                        });
+            }
+        });
+    }
+
+    public static Completable removeExpense(String userId, String id) {
+        return Completable.create(new CompletableOnSubscribe() {
+            @Override
+            public void subscribe(CompletableEmitter emitter) throws Exception {
+                db.collection(FirestoreUser.USERS)
+                        .document(userId)
+                        .collection(EXPENSES)
+                        .document(id)
+                        .delete()
+                        .continueWith(new Continuation<Void, Object>() {
+                            @Override
+                            public Object then(@NonNull Task<Void> task) {
                                 if (task.isSuccessful())
                                     emitter.onComplete();
                                 else

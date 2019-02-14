@@ -13,6 +13,8 @@ import java.util.Date;
 import java.util.List;
 
 import io.reactivex.Completable;
+import io.reactivex.CompletableEmitter;
+import io.reactivex.CompletableOnSubscribe;
 import io.reactivex.Flowable;
 import io.reactivex.functions.Function;
 
@@ -59,5 +61,10 @@ public class ExpensesUserImpl implements ExpensesUser {
         expense.setDate(date);
 
         return FirestoreExpenses.createNewExpenseByUser(expense, getId());
+    }
+
+    @Override
+    public Completable removeExpense(String id) {
+        return FirestoreExpenses.removeExpense(getId(),id);
     }
 }

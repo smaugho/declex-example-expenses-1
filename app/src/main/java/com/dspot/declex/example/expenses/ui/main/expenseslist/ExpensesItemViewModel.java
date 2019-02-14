@@ -1,19 +1,35 @@
 package com.dspot.declex.example.expenses.ui.main.expenseslist;
 
+import android.annotation.SuppressLint;
+import android.arch.lifecycle.MutableLiveData;
+
+import com.dspot.declex.example.expenses.auth.ExpensesAuth;
+import com.dspot.declex.example.expenses.auth.ExpensesUser;
 import com.dspot.declex.example.expenses.vo.Expense_;
 
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 
 import java.util.Locale;
 
 import api.ItemViewModel;
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 import pl.com.dspot.archiannotations.annotation.EViewModel;
+import pl.com.dspot.archiannotations.annotation.Observable;
 
 import static java.lang.String.format;
 
 @EBean
 @EViewModel
 public class ExpensesItemViewModel extends ItemViewModel<Expense_> {
+
+    @Bean
+    ExpensesAuth expensesAuth;
+
+    @Observable
+    MutableLiveData<Exception> errors;
 
     String getExpenseTitle() {
         return model.getDescription();
@@ -39,9 +55,19 @@ public class ExpensesItemViewModel extends ItemViewModel<Expense_> {
         //from outside, so that it should update the list visually, that sadly is not linked (yet)
     }
 
+    @SuppressLint("CheckResult")
     void removeExpense() {
-        //doing the same
-        this.editExpense();
+        if (expensesAuth.currentUser() != null) {
+            expensesAuth.currentUser().removeExpense(model.getId())
+                    .subscribeOn(Schedulers.newThread())
+                    .subscribe(() -> {
+
+                    }, throwable -> errors.postValue((Exception) throwable))
+            ;
+        }
+
+        /*//doing the same
+        this.editExpense();*/
     }
 
 }

@@ -5,9 +5,7 @@ import android.support.v4.app.Fragment;
 
 import com.dspot.declex.annotation.Populate;
 import com.dspot.declex.example.expenses.R;
-import com.dspot.declex.example.expenses.ui.auth.splash.SplashViewModel;
 
-import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 
@@ -17,7 +15,9 @@ import pl.com.dspot.archiannotations.annotation.EBinder;
 import pl.com.dspot.archiannotations.annotation.Observer;
 import pl.com.dspot.archiannotations.annotation.ViewModel;
 
+import static com.dspot.declex.actions.Action.$AlertDialog;
 import static com.dspot.declex.actions.Action.$Populate;
+import static com.dspot.declex.actions.Action.$Toast;
 
 @EBinder
 @EFragment(R.layout.fragment_expenses_list)
@@ -28,6 +28,11 @@ public class ExpensesListFragment extends Fragment {
 
     @Populate
     List<ExpensesItemViewModel> expensesList;
+
+    @Observer
+    void errors(Exception e) {
+        $Toast(e.getMessage());
+    }
 
     @Observer
     void expensesItems(List<ExpensesItemViewModel> expensesItems) {
@@ -42,7 +47,15 @@ public class ExpensesListFragment extends Fragment {
 
     @Click(R.id.actionDelete)
     void removeExpense(ExpensesItemViewModel model) {
-        model.removeExpense();
+        $AlertDialog()
+                .title(R.string.title_dialog_delete_expense)
+                .message(R.string.message_dialog_delete_expense)
+                .positiveButton(android.R.string.ok)
+                .negativeButton(android.R.string.cancel)
+                .dialog();
+        if($AlertDialog.PositiveButtonPressed){
+            model.removeExpense();
+        }
     }
 
 }
