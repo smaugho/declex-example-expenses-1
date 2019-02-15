@@ -58,8 +58,7 @@ public class FirestoreExpenses {
                         List<Expense> expenses = new ArrayList<>();
 
                         for (DocumentSnapshot document : documentSnapshot) {
-
-                            Expense_ expense = document.toObject(Expense_.class);
+                            Expense expense = document.toObject(Expense_.class);
                             expense.setId(document.getId());
 
                             expenses.add(expense);
@@ -79,7 +78,7 @@ public class FirestoreExpenses {
                         .collection(EXPENSES)
                         .add(expense)
                         .continueWith(new Continuation<DocumentReference, Object>() {
-                            @Override
+                             @Override
                             public Object then(@NonNull Task<DocumentReference> task) throws Exception {
                                 if (task.isSuccessful())
                                     emitter.onComplete();
