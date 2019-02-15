@@ -5,6 +5,7 @@ import android.arch.lifecycle.MutableLiveData;
 
 import com.dspot.declex.example.expenses.auth.ExpensesAuth;
 import com.dspot.declex.example.expenses.auth.ExpensesUser;
+import com.dspot.declex.example.expenses.ui.MainNavigation;
 import com.dspot.declex.example.expenses.vo.Expense_;
 
 import org.androidannotations.annotations.Bean;
@@ -29,6 +30,8 @@ public class ExpensesItemViewModel extends ItemViewModel<Expense_> {
     @Observable
     SingleLiveEvent<Boolean> dialog;
 
+    @Bean
+    MainNavigation mainNavigation;
 
     @Bean
     ExpensesAuth expensesAuth;
@@ -81,5 +84,9 @@ public class ExpensesItemViewModel extends ItemViewModel<Expense_> {
 
     private void hideDialog() {
         dialog.postValue(false);
+    }
+
+    public void goToDetails() {
+        mainNavigation.goToExpenseDetails(model);
     }
 }

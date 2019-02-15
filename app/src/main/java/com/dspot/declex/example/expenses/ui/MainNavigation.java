@@ -1,6 +1,7 @@
 package com.dspot.declex.example.expenses.ui;
 
 import com.dspot.declex.example.expenses.navigation.BaseNavigation;
+import com.dspot.declex.example.expenses.vo.Expense_;
 
 import org.androidannotations.annotations.EBean;
 
@@ -45,7 +46,9 @@ public class MainNavigation extends BaseNavigation {
         $NewExpensesActivity();
     }
 
-    public void goToExpenseDetails() {
-        $ExpenseDetailsFragment();
+    public void goToExpenseDetails(Expense_ expense) {
+        $ExpenseDetailsFragment()
+                .expense(expense)
+                .addToBackStack();
     }
 }
