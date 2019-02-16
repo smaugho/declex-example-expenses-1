@@ -3,10 +3,11 @@ package com.dspot.declex.example.expenses.ui.main.expensesdetails;
 
 import android.app.Dialog;
 import android.support.v4.app.Fragment;
+import android.text.format.DateFormat;
 import android.widget.TextView;
 
 import com.dspot.declex.example.expenses.R;
-import com.dspot.declex.example.expenses.ui.main.expenseslist.ExpensesListViewModel;
+import com.dspot.declex.example.expenses.util.DateUtils;
 import com.dspot.declex.example.expenses.vo.Expense;
 import com.dspot.declex.example.expenses.vo.Expense_;
 
@@ -16,13 +17,14 @@ import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.ViewById;
 
+import java.util.Locale;
+
 import pl.com.dspot.archiannotations.annotation.EBinder;
 import pl.com.dspot.archiannotations.annotation.Observer;
 import pl.com.dspot.archiannotations.annotation.ViewModel;
 
 import static com.dspot.declex.actions.Action.$AlertDialog;
 import static com.dspot.declex.actions.Action.$ProgressDialog;
-import static com.dspot.declex.actions.Action.$Toast;
 
 @EBinder
 @EFragment(R.layout.fragment_expense_details)
@@ -35,6 +37,12 @@ public class ExpenseDetailsFragment extends Fragment {
 
     @ViewById(R.id.expenseTitle)
     TextView expenseTitle;
+
+    @ViewById(R.id.expenseDate)
+    TextView expenseDate;
+
+    @ViewById(R.id.expenseTime)
+    TextView expenseTime;
 
     @ViewById(R.id.expenseAmount)
     TextView expenseAmount;
@@ -82,5 +90,7 @@ public class ExpenseDetailsFragment extends Fragment {
         expenseTitle.setText(expense.getDescription());
         expenseAmount.setText(String.valueOf(expense.getAmount()));
         expenseDescription.setText(String.valueOf(expense.getComment()));
+        expenseDate.setText(DateFormat.format(DateUtils.getLocalizedPattern("MMM d, yyyy", Locale.getDefault()), expense.getDate().getTime()));
+        expenseTime.setText(DateFormat.format(DateUtils.getLocalizedPattern("hh:mm:ss a", Locale.getDefault()), expense.getDate().getTime()));
     }
 }
