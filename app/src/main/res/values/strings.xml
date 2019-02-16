@@ -61,4 +61,7 @@
 </string>
     <string name="text_button_delete">Delete</string>
     <string name="text_button_edit">Edit</string>
+    <string name="hint_result">Result</string>
+    <string name="text_week">Week:</string>
+    <string name="text_avg">Avg day spending</string>
 </resources>

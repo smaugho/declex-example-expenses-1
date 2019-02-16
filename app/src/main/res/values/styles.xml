@@ -33,6 +33,12 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="ExpensesCaption2" parent="Base.TextAppearance.AppCompat.Caption">
+        <item name="android:textColor">@color/colorYellow</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="ExpensesActionCaption2" parent="Base.TextAppearance.AppCompat.Caption">
         <item name="android:textColor">@color/colorYellow</item>
         <item name="android:textSize">16sp</item>
