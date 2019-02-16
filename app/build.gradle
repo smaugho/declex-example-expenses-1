@@ -38,7 +38,7 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
 
     def lifecycle_version = "1.1.1"
-    def declex_version = "2.0.a.30"
+    def declex_version = "2.0.a.31"
 
     //DecleX
     annotationProcessor "com.dspot:declex:$declex_version"
@@ -62,6 +62,9 @@ dependencies {
 
     implementation "io.reactivex.rxjava2:rxjava:2.2.0"
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+
+    //validation
+    implementation 'com.github.nisrulz:validatetor:1.0.0'
 
 }
 apply plugin: 'com.google.gms.google-services'

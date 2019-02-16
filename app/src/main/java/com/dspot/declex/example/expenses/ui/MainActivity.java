@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         mainViewModel.init();
+
+        mainNavigation.goToExpensesList();
     }
 
     @Override
@@ -93,25 +95,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             goToExpensesPerWeek();
         } else if (id == R.id.nav_profile) {
             goToProfile();
+            return false;
         } else if (id == R.id.nav_logout) {
-
             logout();
-
             return false;
-        } else
+        } else if (id == R.id.nav_new_expenses) {
+            goToCreateNewExpense();
             return false;
+        }
 
         return true;
     }
 
+    private void goToCreateNewExpense() {
+        mainNavigation.goToCreateNewExpenses();
+    }
+
     private void goToExpensesList() {
         mainNavigation.goToExpensesList();
-
     }
 
     private void goToExpensesPerWeek() {
         mainNavigation.goToExpensesPerWeek();
-
     }
 
     private void logout() {

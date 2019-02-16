@@ -1,13 +1,16 @@
 package com.dspot.declex.example.expenses.ui;
 
 import com.dspot.declex.example.expenses.navigation.BaseNavigation;
+import com.dspot.declex.example.expenses.vo.Expense_;
 
 import org.androidannotations.annotations.EBean;
 
 import static com.dspot.declex.Action.$AuthActivity;
-import static com.dspot.declex.Action.$LoginFragment;
-import static com.dspot.declex.Action.$MainActivity;
-import static com.dspot.declex.Action.$ProfileFragment;
+import static com.dspot.declex.Action.$ExpenseDetailsFragment;
+import static com.dspot.declex.Action.$ExpensesListFragment;
+import static com.dspot.declex.Action.$ExpensesPerWeekFragment;
+import static com.dspot.declex.Action.$NewExpensesActivity;
+import static com.dspot.declex.Action.$ProfileActivity;
 import static com.dspot.declex.Action.$SignUpFragment;
 import static com.dspot.declex.Action.$SplashFragment;
 
@@ -15,10 +18,11 @@ import static com.dspot.declex.Action.$SplashFragment;
 public class MainNavigation extends BaseNavigation {
 
     public void goToExpensesList() {
+        $ExpensesListFragment();
     }
 
     public void goToProfile() {
-        $ProfileFragment();
+        $ProfileActivity();
     }
 
     public void goToSplash() {
@@ -35,5 +39,16 @@ public class MainNavigation extends BaseNavigation {
     }
 
     public void goToExpensesPerWeek() {
+        $ExpensesPerWeekFragment();
+    }
+
+    public void goToCreateNewExpenses() {
+        $NewExpensesActivity();
+    }
+
+    public void goToExpenseDetails(Expense_ expense) {
+        $ExpenseDetailsFragment()
+                .expense(expense)
+                .addToBackStack();
     }
 }

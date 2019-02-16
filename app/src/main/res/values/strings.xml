@@ -26,4 +26,42 @@
     <string name="navigation_profile">Profile</string>
     <string name="navigation_logout">Logout</string>
     <string name="action_save">Save</string>
+    <string name="title_activity_new_expenses">NewExpensesActivity</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="action_create_new_expense">Create Expense</string>
+    <string name="hint_input_comment">Comment</string>
+    <string name="hint_input_date">Date</string>
+    <string name="hint_input_time">Time</string>
+    <string name="hint_input_amount">Amount</string>
+    <string name="hint_input_description">Description</string>
+    <string name="hint_create_new_expense">Create a new experense</string>
+    <string name="hint_expenses_list">Expenses list</string>
+    <string name="hint_new_expenses">+Add expense</string>
+    <string name="text_button_filter">Filter by</string>
+    <string name="hint_from">From</string>
+    <string name="hint_to">To</string>
+    <string name="title_dialog_delete_expense">Delete expense</string>
+    <string name="message_dialog_delete_expense">Are you want to delete this expense?</string>
+    <string name="hint_expenses_details">Expense details</string>
+
+    <!-- DateUtils -->
+    <string name="DateUtils_just_now">Now</string>
+    <string name="DateUtils_minutes_ago">%d min</string>
+    <string name="DateUtils_today">Today</string>
+    <string name="DateUtils_yesterday">Yesterday</string>
+
+    <string name="DeviceListItem_today">Today</string>
+    <!-- plurals.xml -->
+    <plurals name="hours_ago">
+        <item quantity="one">%d hour</item>
+        <item quantity="other">%d hours</item>
+    </plurals>
+
+<string name="large_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium amet commodi dicta dolor ea exercitationem incidunt laborum magnam molestiae nemo, nostrum officia porro quis quisquam repellendus totam velit vitae?
+</string>
+    <string name="text_button_delete">Delete</string>
+    <string name="text_button_edit">Edit</string>
+    <string name="hint_result">Result</string>
+    <string name="text_week">Week:</string>
+    <string name="text_avg">Avg day spending</string>
 </resources>
