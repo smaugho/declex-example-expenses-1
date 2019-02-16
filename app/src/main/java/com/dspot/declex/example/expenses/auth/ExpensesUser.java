@@ -8,6 +8,7 @@ import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
+import io.reactivex.Observable;
 
 public interface ExpensesUser extends User {
     void logout();
@@ -20,4 +21,5 @@ public interface ExpensesUser extends User {
 
     Completable editExpense(Expense id);
 
+    Observable<Expense> getExpenseById(String id);
 }

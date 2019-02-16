@@ -1,6 +1,7 @@
 package com.dspot.declex.example.expenses.ui.main.expensesdetails;
 
 import android.annotation.SuppressLint;
+import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
 import com.dspot.declex.example.expenses.auth.ExpensesAuth;
@@ -11,6 +12,7 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 
 import api.SingleLiveEvent;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import pl.com.dspot.archiannotations.annotation.EViewModel;
 import pl.com.dspot.archiannotations.annotation.Observable;
@@ -26,7 +28,7 @@ public class ExpenseDetailsViewModel extends ViewModel {
     MainNavigation mainNavigation;
 
     @Observable
-    SingleLiveEvent<Expense> expense;
+    MutableLiveData<Expense> expense;
 
     @Observable
     SingleLiveEvent<Exception> errors;
@@ -36,6 +38,14 @@ public class ExpenseDetailsViewModel extends ViewModel {
 
     public void setExpense(Expense expense) {
         this.expense.setValue(expense);
+
+        if (expensesAuth.currentUser() != null) {
+            expensesAuth.currentUser().getExpenseById(expense.getId())
+                    .subscribeOn(Schedulers.newThread())
+                    .subscribe(newExpense -> ExpenseDetailsViewModel.this.expense.postValue(newExpense), throwable -> {
+                        errors.setValue((Exception) throwable);
+                    });
+        }
     }
 
     @SuppressLint("CheckResult")

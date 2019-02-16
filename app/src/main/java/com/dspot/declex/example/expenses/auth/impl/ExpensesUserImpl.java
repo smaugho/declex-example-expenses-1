@@ -12,6 +12,7 @@ import java.util.List;
 
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
+import io.reactivex.Observable;
 
 public class ExpensesUserImpl implements ExpensesUser {
 
@@ -66,5 +67,10 @@ public class ExpensesUserImpl implements ExpensesUser {
     @Override
     public Completable editExpense(Expense expense) {
         return FirestoreExpenses.editExpense(getId(), expense);
+    }
+
+    @Override
+    public Observable<Expense> getExpenseById(String id) {
+        return FirestoreExpenses.expenseById(getId(), id);
     }
 }
