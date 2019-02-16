@@ -60,6 +60,11 @@ public class ExpensesUserImpl implements ExpensesUser {
 
     @Override
     public Completable removeExpense(String id) {
-        return FirestoreExpenses.removeExpense(getId(),id);
+        return FirestoreExpenses.removeExpense(getId(), id);
+    }
+
+    @Override
+    public Completable editExpense(Expense expense) {
+        return FirestoreExpenses.editExpense(getId(), expense);
     }
 }

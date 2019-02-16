@@ -15,7 +15,7 @@ public class ItemViewModel<T> extends ViewModel {
 
     protected int position;
 
-    protected T model;
+    public T model;
 
     private ItemViewModelsModifiedCallback<T> onItemViewModelsModified;
 

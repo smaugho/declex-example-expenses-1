@@ -17,4 +17,7 @@ public interface ExpensesUser extends User {
     Completable createNewExpense(String description, double amount, Date date, String comment);
 
     Completable removeExpense(String id);
+
+    Completable editExpense(Expense id);
+
 }

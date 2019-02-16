@@ -78,7 +78,7 @@ public class FirestoreExpenses {
                         .collection(EXPENSES)
                         .add(expense)
                         .continueWith(new Continuation<DocumentReference, Object>() {
-                             @Override
+                            @Override
                             public Object then(@NonNull Task<DocumentReference> task) throws Exception {
                                 if (task.isSuccessful())
                                     emitter.onComplete();
@@ -110,6 +110,30 @@ public class FirestoreExpenses {
                                 return null;
                             }
                         });
+            }
+        });
+    }
+
+    public static Completable editExpense(String userId, Expense expense) {
+        return Completable.create(new CompletableOnSubscribe() {
+            @Override
+            public void subscribe(CompletableEmitter emitter) throws Exception {
+                /*db.collection(FirestoreUser.USERS)
+                        .document(userId)
+                        .collection(EXPENSES)
+                        .document(expense.getId())
+                        .update(expense)
+                        .continueWith(new Continuation<Void, Object>() {
+                            @Override
+                            public Object then(@NonNull Task<Void> task) {
+                                if (task.isSuccessful())
+                                    emitter.onComplete();
+                                else
+                                    emitter.tryOnError(task.getException());
+                                return null;
+                            }
+                        });*/
+                emitter.onComplete();
             }
         });
     }

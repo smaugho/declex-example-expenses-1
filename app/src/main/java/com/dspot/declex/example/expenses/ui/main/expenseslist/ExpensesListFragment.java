@@ -3,10 +3,19 @@ package com.dspot.declex.example.expenses.ui.main.expenseslist;
 
 import android.app.Dialog;
 import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
+import com.dspot.declex.actions.AlertDialogGate;
 import com.dspot.declex.annotation.Populate;
 import com.dspot.declex.example.expenses.R;
 import com.dspot.declex.example.expenses.ui.MainNavigation;
+import com.dspot.declex.example.expenses.ui.dialogedit.DialogExpenseEdit;
+import com.dspot.declex.example.expenses.vo.Expense;
+import com.dspot.declex.example.expenses.vo.Expense_;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
@@ -59,7 +68,42 @@ public class ExpensesListFragment extends Fragment {
 
     @Click(R.id.actionEdit)
     void editExpense(ExpensesItemViewModel model) {
-        model.editExpense();
+        //model.editExpense();
+
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_expense_edit_layout, (ViewGroup) getView(), false);
+
+        EditText editDescription = view.findViewById(R.id.editDescription);
+        editDescription.setText(model.model.getDescription());
+
+        EditText editAmount = view.findViewById(R.id.editAmount);
+        editAmount.setText(String.valueOf(model.model.getAmount()));
+
+        EditText editComment = view.findViewById(R.id.editComment);
+        editComment.setText(model.model.getComment());
+
+        Button createAction = view.findViewById(R.id.createAction);
+
+        Dialog tempDialog = $AlertDialog()
+                .view(view)
+                .dialog();
+
+
+        createAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Expense expense = new Expense_();
+                expense.setId(model.model.getId());
+                expense.setDescription(editDescription.getText().toString());
+                expense.setComment(editComment.getText().toString());
+                expense.setAmount(Double.parseDouble(editAmount.getText().toString()));
+
+                model.editExpense(expense);
+
+                tempDialog.dismiss();
+            }
+        });
+
+
     }
 
     @Click(R.id.actionDelete)
