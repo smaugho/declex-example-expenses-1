@@ -4,6 +4,11 @@ package com.dspot.declex.example.expenses.ui.main.expensesdetails;
 import android.app.Dialog;
 import android.support.v4.app.Fragment;
 import android.text.format.DateFormat;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.dspot.declex.example.expenses.R;
@@ -71,6 +76,39 @@ public class ExpenseDetailsFragment extends Fragment {
     @Observer
     void expense(Expense expense) {
         updateUI(expense);
+    }
+
+    @Click
+    public void editExpense() {
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_expense_edit_layout, (ViewGroup) getView(), false);
+
+        EditText editDescription = view.findViewById(R.id.editDescription);
+        editDescription.setText(expense.getDescription());
+
+        EditText editAmount = view.findViewById(R.id.editAmount);
+        editAmount.setText(String.valueOf(expense.getAmount()));
+
+        EditText editComment = view.findViewById(R.id.editComment);
+        editComment.setText(expense.getComment());
+
+        Button createAction = view.findViewById(R.id.createAction);
+
+        Dialog tempDialog = $AlertDialog()
+                .view(view)
+                .dialog();
+
+
+        createAction.setOnClickListener(view1 -> {
+            Expense expense = new Expense_();
+            expense.setId(expense.getId());
+            expense.setDescription(editDescription.getText().toString());
+            expense.setComment(editComment.getText().toString());
+            expense.setAmount(Double.parseDouble(editAmount.getText().toString()));
+
+            expenseDetailsViewModel.editExpense(expense);
+
+            tempDialog.dismiss();
+        });
     }
 
     @Click(R.id.actionDelete)

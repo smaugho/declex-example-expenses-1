@@ -71,4 +71,19 @@ public class ExpenseDetailsViewModel extends ViewModel {
     private void hideDialog() {
         dialog.postValue(false);
     }
+
+    public void editExpense(Expense expense) {
+        if (expensesAuth.currentUser() != null) {
+            showDialog();
+            expensesAuth.currentUser().editExpense(expense)
+                    .subscribeOn(Schedulers.newThread())
+                    .subscribe(() -> {
+                        hideDialog();
+                        mainNavigation.goBack();
+                    }, throwable -> {
+                        hideDialog();
+                        errors.postValue((Exception) throwable);
+                    });
+        }
+    }
 }
